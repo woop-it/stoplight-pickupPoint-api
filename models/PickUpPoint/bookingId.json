@@ -1,0 +1,12 @@
+{
+  "title": "Booking Id",
+  "x-stoplight": {
+    "id": "glzlzr5znhn0x"
+  },
+  "type": "string",
+  "description": "Unique booking Id sent by the partner",
+  "example": "Booking_001",
+  "x-tags": [
+    "PickUpPoint"
+  ]
+}

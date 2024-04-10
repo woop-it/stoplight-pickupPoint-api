@@ -1,0 +1,15 @@
+{
+  "title": "Package Type",
+  "x-stoplight": {
+    "id": "mkqk84vuzthmo"
+  },
+  "type": "string",
+  "description": "Package Type",
+  "enum": [
+    "PACKAGE",
+    "TRAY",
+    "PALLET"
+  ],
+  "example": "PACKAGE",
+  "default": "PACKAGE"
+}

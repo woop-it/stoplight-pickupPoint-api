@@ -1,0 +1,12 @@
+{
+  "title": "Parcel Id",
+  "x-stoplight": {
+    "id": "3178i8klqxktv"
+  },
+  "type": "string",
+  "example": "Parcel_001",
+  "description": "Parcel Id associated to a parcel entered by a carrier",
+  "x-tags": [
+    "Parcel"
+  ]
+}

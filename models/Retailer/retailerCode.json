@@ -1,0 +1,12 @@
+{
+  "title": "Retailer Code",
+  "x-stoplight": {
+    "id": "tc9vay4ed7dk7"
+  },
+  "type": "string",
+  "example": "Retailer_001",
+  "description": "Id of the retailer",
+  "x-tags": [
+    "Retailer"
+  ]
+}

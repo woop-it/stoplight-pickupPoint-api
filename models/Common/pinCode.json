@@ -1,0 +1,12 @@
+{
+  "title": "Pin Code",
+  "x-stoplight": {
+    "id": "kwqq4qq3js4mt"
+  },
+  "type": "string",
+  "description": "Pin Code",
+  "example": "123456",
+  "x-tags": [
+    "Common"
+  ]
+}

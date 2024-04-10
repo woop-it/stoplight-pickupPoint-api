@@ -1,0 +1,12 @@
+{
+  "title": "Network Operator Code",
+  "x-stoplight": {
+    "id": "w2vg6oev99h2t"
+  },
+  "type": "string",
+  "example": "NetworkOperator_001",
+  "description": "Network operator code",
+  "x-tags": [
+    "PickUpPoint"
+  ]
+}

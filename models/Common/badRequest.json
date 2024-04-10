@@ -1,0 +1,31 @@
+{
+  "type": "object",
+  "x-stoplight": {
+    "id": "ioic8ccep3vkm"
+  },
+  "description": "Missing and/or incorrect items in the body",
+  "title": "Error 400",
+  "x-examples": {
+    "Exemple": {
+      "reasons": [
+        "Missing argument 'xxxxx'"
+      ]
+    }
+  },
+  "properties": {
+    "reasons": {
+      "type": "array",
+      "description": "Indication of the error returned",
+      "items": {
+        "type": "string",
+        "example": "Missing argument 'xxxxx'",
+        "x-stoplight": {
+          "id": "u31j3kkidh10v"
+        }
+      },
+      "x-stoplight": {
+        "id": "nt7ipvi0e9cy8"
+      }
+    }
+  }
+}

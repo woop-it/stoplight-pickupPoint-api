@@ -1,0 +1,430 @@
+{
+  "description": "Specifies the information included in a package",
+  "x-stoplight": {
+    "id": "auoixms2quczn"
+  },
+  "type": "object",
+  "x-examples": {
+    "Example": {
+      "references": [
+        {
+          "reference": "12345B",
+          "barcode": {
+            "value": "54fd56g4f5gfd456sd",
+            "type": "barcode",
+            "format": "128"
+          }
+        }
+      ],
+      "length": {
+        "value": 200,
+        "unit": "mm"
+      },
+      "width": {
+        "value": 200,
+        "unit": "mm"
+      },
+      "height": {
+        "value": 100,
+        "unit": "mm"
+      },
+      "weight": {
+        "value": 1,
+        "unit": "kg"
+      },
+      "products": [
+        {
+          "type": "TYPOLOGY_GENERIC",
+          "ean": "11233",
+          "cug": "KJJNN",
+          "label": "Computer",
+          "quantity": 1
+        }
+      ],
+      "quantity": 1,
+      "attributes": {
+        "footprint": {
+          "value": 13,
+          "unit": "m2"
+        }
+      },
+      "type": "PACKAGE"
+    }
+  },
+  "title": "Package",
+  "definitions": {
+    "packagesReferences": {
+      "type": "array",
+      "description": "Specifies package references. Note that count of reference must be equal to package quantity",
+      "title": "Package references (packagesReferences)",
+      "x-examples": {
+        "Example": [
+          {
+            "reference": "12345B",
+            "barcode": {
+              "value": "54fd56g4f5gfd456sd",
+              "type": "barcode",
+              "format": "128"
+            }
+          }
+        ]
+      },
+      "items": {
+        "type": "object",
+        "properties": {
+          "reference": {
+            "type": "string",
+            "description": "Specifies package references.",
+            "example": "12345B",
+            "x-stoplight": {
+              "id": "funrpz1gks1if"
+            }
+          },
+          "barcode": {
+            "$ref": "./models/barcode.yaml",
+            "x-stoplight": {
+              "id": "dfqtsq47zwtf4"
+            }
+          }
+        },
+        "required": [
+          "reference"
+        ],
+        "x-stoplight": {
+          "id": "jltkh0b83lar9"
+        }
+      },
+      "x-stoplight": {
+        "id": "c7qoxm8we90ea"
+      }
+    },
+    "length": {
+      "required": [
+        "unit",
+        "value"
+      ],
+      "properties": {
+        "value": {
+          "type": "number",
+          "x-stoplight": {
+            "id": "vwb7bqpuxii36"
+          }
+        },
+        "unit": {
+          "$ref": "#/definitions/lengthUnits",
+          "x-stoplight": {
+            "id": "tc5uio3m788dk"
+          }
+        }
+      },
+      "description": "Specifies the size of a package.",
+      "x-examples": {
+        "Example": {
+          "value": 200,
+          "unit": "mm"
+        }
+      },
+      "title": "Dimension (length)",
+      "x-stoplight": {
+        "id": "69gih3rzhucjp"
+      }
+    },
+    "lengthUnits": {
+      "type": "string",
+      "description": "Specifies the unit of measurement for the dimensions.",
+      "enum": [
+        "mm",
+        "cm",
+        "m",
+        "km",
+        "in",
+        "ft-us",
+        "ft",
+        "mi"
+      ],
+      "x-examples": {
+        "Example": "mm"
+      },
+      "title": "Unit of measurement (lengthUnit)",
+      "x-stoplight": {
+        "id": "1krbrpc75kc7q"
+      }
+    },
+    "mass": {
+      "required": [
+        "unit",
+        "value"
+      ],
+      "properties": {
+        "value": {
+          "type": "number",
+          "x-stoplight": {
+            "id": "5czkzi98p5n39"
+          }
+        },
+        "unit": {
+          "$ref": "#/definitions/massUnits",
+          "x-stoplight": {
+            "id": "phfvr0uvjuu4j"
+          }
+        }
+      },
+      "description": "Specifies the weight of a package/product.",
+      "x-examples": {
+        "Example": {
+          "value": 1,
+          "unit": "kg"
+        }
+      },
+      "title": "Weight (mass)",
+      "x-stoplight": {
+        "id": "oos7zl9uqr8ti"
+      }
+    },
+    "massUnits": {
+      "type": "string",
+      "description": "Specifies the unit of weight.",
+      "enum": [
+        "kg",
+        "mcg",
+        "mg",
+        "g",
+        "oz",
+        "lb",
+        "mt",
+        "t"
+      ],
+      "x-examples": {
+        "Example": "kg"
+      },
+      "title": "Unit of weight (massUnits)",
+      "x-stoplight": {
+        "id": "2ojj6w02gg8nz"
+      }
+    },
+    "product": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/productType",
+          "x-stoplight": {
+            "id": "a5fh419yvcivt"
+          }
+        },
+        "ean": {
+          "type": "string",
+          "description": "Product EAN",
+          "x-stoplight": {
+            "id": "pvqwosviqnnza"
+          }
+        },
+        "cug": {
+          "type": "string",
+          "description": "Product Cug",
+          "x-stoplight": {
+            "id": "09exsg60ow4c6"
+          }
+        },
+        "label": {
+          "type": "string",
+          "description": "Product description",
+          "x-stoplight": {
+            "id": "cwukc0fdqntc0"
+          }
+        },
+        "quantity": {
+          "type": "integer",
+          "default": 1,
+          "description": "Product quantity",
+          "x-stoplight": {
+            "id": "14mj1zrsoccoi"
+          }
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "x-stoplight": {
+        "id": "nqdl3doe502h3"
+      }
+    },
+    "productType": {
+      "type": "string",
+      "description": "Specifies the product type.",
+      "enum": [
+        "TYPOLOGY_GENERIC",
+        "TYPOLOGY_GROCERY",
+        "TYPOLOGY_FRESH",
+        "TYPOLOGY_FROZEN",
+        "TYPOLOGY_DANGEROUS",
+        "TYPOLOGY_HOUSEHOLD",
+        "TYPOLOGY_VOLUMINOUS",
+        "TYPOLOGY_FRAGILE",
+        "TYPOLOGY_VOLUMINOUS_FRAGILE",
+        "TYPOLOGY_LARGE_HOUSEHOLD",
+        "TYPOLOGY_SMALL_HOUSEHOLD"
+      ],
+      "x-examples": {
+        "Example": "TYPOLOGY_GENERIC"
+      },
+      "title": "Product type (productType)",
+      "x-stoplight": {
+        "id": "aazjh76hkzwx5"
+      }
+    }
+  },
+  "examples": [
+    {
+      "references": [
+        {
+          "reference": "Package_Reference_001",
+          "barcode": {
+            "value": "54fd56g4f5gfd456sd",
+            "type": "barcode",
+            "format": "128"
+          }
+        }
+      ],
+      "length": {
+        "value": 10,
+        "unit": "cm"
+      },
+      "width": {
+        "value": 10,
+        "unit": "cm"
+      },
+      "height": {
+        "value": 10,
+        "unit": "cm"
+      },
+      "weight": {
+        "value": 5,
+        "unit": "kg"
+      },
+      "products": [
+        {
+          "type": "TYPOLOGY_GENERIC",
+          "ean": "Ean_001",
+          "cug": "Cug_001",
+          "label": "Product_Label",
+          "quantity": 1
+        }
+      ],
+      "quantity": 1,
+      "attributes": {
+        "footprint": {
+          "value": 10,
+          "unit": "m2"
+        }
+      },
+      "type": "PACKAGE"
+    }
+  ],
+  "x-tags": [
+    "Package"
+  ],
+  "properties": {
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "reference": {
+            "$ref": "../Package/packageReference.json",
+            "x-stoplight": {
+              "id": "2yjnd2qnh2ivd"
+            }
+          },
+          "barcode": {
+            "$ref": "../Common/barcode.json",
+            "x-stoplight": {
+              "id": "bkh7ubm3hh1db"
+            }
+          }
+        },
+        "x-stoplight": {
+          "id": "mtjk0opd51a3p"
+        }
+      },
+      "x-stoplight": {
+        "id": "av7opv27lu3bz"
+      }
+    },
+    "length": {
+      "$ref": "../Dimension/length.json",
+      "x-stoplight": {
+        "id": "3mer7shexkosn"
+      }
+    },
+    "width": {
+      "$ref": "../Dimension/length.json",
+      "x-stoplight": {
+        "id": "ee9hbh1q1u5nk"
+      }
+    },
+    "height": {
+      "$ref": "../Dimension/length.json",
+      "x-stoplight": {
+        "id": "194ap6izo82li"
+      }
+    },
+    "weight": {
+      "$ref": "../Dimension/weight.json",
+      "x-stoplight": {
+        "id": "al6tqf090lxlj"
+      }
+    },
+    "products": {
+      "type": "array",
+      "description": "List of products in the package",
+      "items": {
+        "$ref": "../Product/product.json",
+        "x-stoplight": {
+          "id": "7o71m5a0m50fb"
+        }
+      },
+      "x-stoplight": {
+        "id": "4kiuog406exos"
+      }
+    },
+    "quantity": {
+      "type": "integer",
+      "default": 1,
+      "description": "Quantity of packages",
+      "x-stoplight": {
+        "id": "bpbcpjpvtrvt5"
+      }
+    },
+    "attributes": {
+      "type": "object",
+      "description": "package attributes",
+      "properties": {
+        "footprint": {
+          "$ref": "../Dimension/footprint.json",
+          "description": "package footprint on the ground",
+          "x-stoplight": {
+            "id": "it35q204x2ffx"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "fnguwoz6bg9ga"
+      }
+    },
+    "type": {
+      "$ref": "./packageType.json",
+      "description": "package type",
+      "x-stoplight": {
+        "id": "bpfwsgr68jnth"
+      }
+    }
+  },
+  "required": [
+    "length",
+    "width",
+    "height",
+    "weight",
+    "products",
+    "quantity"
+  ]
+}

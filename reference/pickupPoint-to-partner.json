@@ -1,0 +1,124 @@
+{
+  "openapi": "3.1.0",
+  "x-stoplight": {
+    "id": "lesozarwpz4rd"
+  },
+  "info": {
+    "title": "PickupPoint to Partner",
+    "version": "1.0",
+    "description": "This document contains the technical information about Woop APIs for pickup point. For any questions or clarification, please contact the internal technical team.\n\nTo use \"PickupPoint to partner\" APIs, you must use the confidential access codes.\n\nThe version currently available in the documentation is Version 1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/bookins/{bookingId}/status": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "bookingId",
+          "in": "path",
+          "required": true,
+          "description": "booking id"
+        }
+      ],
+      "put": {
+        "summary": "Receive booking status",
+        "tags": [],
+        "responses": {
+          "204": {
+            "description": "Request processed successfully"
+          },
+          "400": {
+            "description": "Missing and/or incorrect items in the body"
+          },
+          "403": {
+            "description": "Information can no longer be sent"
+          },
+          "404": {
+            "description": "The \"bookingId\" was not found"
+          }
+        },
+        "operationId": "put-users-userId",
+        "x-stoplight": {
+          "id": "5p31o605qom3r"
+        },
+        "description": "This method allows to receive booking's status.",
+        "requestBody": {
+          "description": "Contains the updated status information.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/putBookingStatus"
+              },
+              "examples": {
+                "Example 1": {
+                  "value": {
+                    "bookingId": "Booking_001",
+                    "status": "PICK_UP_POINT_BOOKING_OK",
+                    "subStatus": "MANUAL",
+                    "date": "2019-08-24T14:15:22Z"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "putBookingStatus": {
+        "title": "putBookingStatus",
+        "x-stoplight": {
+          "id": "hhtcjrz8172xm"
+        },
+        "type": "object",
+        "required": [
+          "bookingId"
+        ],
+        "properties": {
+          "bookingId": {
+            "$ref": "../models/PickUpPoint/bookingId.json",
+            "x-stoplight": {
+              "id": "qd9itavwuccuq"
+            }
+          },
+          "status": {
+            "$ref": "../models/PickUpPoint/bookingStatus.json",
+            "x-stoplight": {
+              "id": "ll9nqba0r8fbr"
+            }
+          },
+          "subStatus": {
+            "$ref": "../models/PickUpPoint/bookingSubStatus.json",
+            "x-stoplight": {
+              "id": "1ch86fo2k42km"
+            }
+          },
+          "date": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "qu1gol8wjh7kx"
+            },
+            "format": "date-time"
+          }
+        },
+        "examples": [
+          {
+            "bookingId": "Booking_001",
+            "status": "PICK_UP_POINT_BOOKING_OK",
+            "subStatus": "MANUAL",
+            "date": "2019-08-24T14:15:22Z"
+          }
+        ],
+        "description": "send the booking status"
+      }
+    }
+  }
+}

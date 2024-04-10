@@ -1,0 +1,46 @@
+{
+  "title": "Box Category",
+  "x-stoplight": {
+    "id": "jhl9dso5b01ou"
+  },
+  "type": "object",
+  "description": "Box category of a pick up point",
+  "examples": [
+    {
+      "id": "BoxCategory_001",
+      "code": "S",
+      "accessibility": "UPPER"
+    }
+  ],
+  "x-tags": [
+    "PickUpPoint"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "./boxCategoryId.json",
+      "description": "box category Id",
+      "x-stoplight": {
+        "id": "raojcycl0tbae"
+      }
+    },
+    "code": {
+      "$ref": "./boxCategoryCode.json",
+      "x-stoplight": {
+        "id": "gxpoejrp1sovd"
+      },
+      "description": "box category code"
+    },
+    "accessibility": {
+      "$ref": "./boxCategoryAccessibility.json",
+      "description": "box category accessibility",
+      "x-stoplight": {
+        "id": "b2g8bkndbnh55"
+      }
+    }
+  },
+  "required": [
+    "id",
+    "code",
+    "accessibility"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "title": "Barcode",
+  "x-stoplight": {
+    "id": "hub8b5jmpgwrx"
+  },
+  "type": "object",
+  "description": "Barcode / QRCode",
+  "examples": [
+    {
+      "value": "54fd56g4f5gfd456sd",
+      "type": "barcode",
+      "format": "128"
+    }
+  ],
+  "x-internal": false,
+  "x-tags": [
+    "Common"
+  ],
+  "properties": {
+    "value": {
+      "type": "string",
+      "description": "Barcode value",
+      "example": "123456",
+      "x-stoplight": {
+        "id": "nofrb0q2go7gk"
+      }
+    },
+    "type": {
+      "type": "string",
+      "description": "Barcode display type",
+      "enum": [
+        "barcode"
+      ],
+      "example": "barcode",
+      "x-stoplight": {
+        "id": "3bfttqrrplhpv"
+      }
+    },
+    "format": {
+      "type": "string",
+      "description": "Barcode format",
+      "enum": [
+        "128"
+      ],
+      "example": "128",
+      "x-stoplight": {
+        "id": "p8sm92xruwipf"
+      }
+    }
+  },
+  "required": [
+    "value",
+    "type",
+    "format"
+  ]
+}

@@ -1,0 +1,285 @@
+{
+  "title": "Callback",
+  "x-stoplight": {
+    "id": "ozgjcnvbn3z0x"
+  },
+  "type": "object",
+  "description": "contains all the information to fill in a callback",
+  "examples": [
+    {
+      "url": "https://myurl.com",
+      "version": "1.0.0",
+      "headers": [
+        {
+          "key": "x-api-version",
+          "value": "1.0.0"
+        }
+      ],
+      "auth": {
+        "basic": {
+          "username": "username_001",
+          "password": "password_001"
+        }
+      }
+    }
+  ],
+  "definitions": {
+    "PostSubscriptionBasic": {
+      "title": "Subscription Basic",
+      "x-stoplight": {
+        "id": "5ly320kfp4fn3"
+      },
+      "type": "object",
+      "description": "Specifies how to generate the Basic subscription token.",
+      "properties": {
+        "basic": {
+          "type": "object",
+          "description": "To be defined if the required API authentication method is basic",
+          "properties": {
+            "username": {
+              "type": "string",
+              "description": "User login for the subscription",
+              "example": "username_001",
+              "x-stoplight": {
+                "id": "3mt8a57f2tq7q"
+              }
+            },
+            "password": {
+              "type": "string",
+              "description": "User password for the subscription",
+              "example": "password_001",
+              "x-stoplight": {
+                "id": "9jule057guc53"
+              }
+            }
+          },
+          "required": [
+            "username",
+            "password"
+          ],
+          "x-stoplight": {
+            "id": "mq6r8mdsqpq13"
+          }
+        }
+      },
+      "examples": [
+        {
+          "basic": {
+            "username": "username_001",
+            "password": "password_001"
+          }
+        }
+      ]
+    },
+    "PostSubscriptionOAuth2": {
+      "title": "Subscription OAuth2",
+      "x-stoplight": {
+        "id": "8sg2uxo65a93k"
+      },
+      "type": "object",
+      "description": "Specifies how to generate the OAuth2 subscription token.",
+      "properties": {
+        "oauth2": {
+          "type": "object",
+          "description": "To be defined if the required API authentication method is oauth2",
+          "properties": {
+            "client_id": {
+              "type": "string",
+              "example": "client_id_001",
+              "x-stoplight": {
+                "id": "e6bvts9jbp5zc"
+              }
+            },
+            "client_secret": {
+              "type": "string",
+              "example": "client_secret_001",
+              "x-stoplight": {
+                "id": "xycsg21dz6leu"
+              }
+            },
+            "audience": {
+              "type": "string",
+              "example": "https://myaudience.com",
+              "x-stoplight": {
+                "id": "rlv55hzdg7hd5"
+              }
+            },
+            "grant_type": {
+              "type": "string",
+              "example": "client_credentials",
+              "x-stoplight": {
+                "id": "1tlssctlcojkj"
+              }
+            },
+            "tokenEndPoint": {
+              "type": "string",
+              "description": "URL to retrieve the access token according to the clientId and the clientSecret",
+              "example": "https://mytokenendpoint.com",
+              "x-stoplight": {
+                "id": "z3fj3qqm3e523"
+              }
+            }
+          },
+          "required": [
+            "client_id",
+            "client_secret",
+            "tokenEndPoint"
+          ],
+          "x-stoplight": {
+            "id": "fko1n5mld12a0"
+          }
+        }
+      },
+      "examples": [
+        {
+          "oauth2": {
+            "client_id": "client_id_001",
+            "client_secret": "client_secret_001",
+            "audience": "https://myaudience.com",
+            "grant_type": "client_credentials",
+            "tokenEndPoint": "https://mytokenendpoint.com"
+          }
+        }
+      ]
+    },
+    "PostSubscriptionToken": {
+      "title": "Subscription Token",
+      "x-stoplight": {
+        "id": "2ztnaka7cebc3"
+      },
+      "type": "object",
+      "description": "Specifies how to generate the Bearer subscription token.",
+      "properties": {
+        "token": {
+          "type": "object",
+          "description": "To be defined if the authentication method gives a bearer token from a username/password",
+          "properties": {
+            "username": {
+              "type": "string",
+              "description": "User login for the subscription",
+              "example": "username_001",
+              "x-stoplight": {
+                "id": "713svdk0f1rx9"
+              }
+            },
+            "password": {
+              "type": "string",
+              "description": "User password for the subscription",
+              "example": "password_001",
+              "x-stoplight": {
+                "id": "f7mjxqatktxpy"
+              }
+            },
+            "endpoint": {
+              "type": "string",
+              "description": "URL to retrieve the access token",
+              "example": "https://myendpoint.com",
+              "x-stoplight": {
+                "id": "kfnr4o6eivdb3"
+              }
+            }
+          },
+          "required": [
+            "username",
+            "password",
+            "endpoint"
+          ],
+          "x-stoplight": {
+            "id": "yktc1vzlfoyfm"
+          }
+        }
+      },
+      "examples": [
+        {
+          "token": {
+            "username": "username_001",
+            "password": "password_001",
+            "endpoint": "https://myendpoint.com"
+          }
+        }
+      ]
+    }
+  },
+  "x-tags": [
+    "Subscription"
+  ],
+  "properties": {
+    "url": {
+      "type": "string",
+      "description": "URL of the route",
+      "example": "https://myurl.com",
+      "x-stoplight": {
+        "id": "yyibv1f9a0ky2"
+      }
+    },
+    "version": {
+      "type": "string",
+      "description": "version of Woop API format",
+      "example": "1.0.0",
+      "x-stoplight": {
+        "id": "qgvk3anvblsnq"
+      }
+    },
+    "headers": {
+      "description": "Headers for this callback only",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": "key of the header",
+            "example": "x-api-version",
+            "x-stoplight": {
+              "id": "pmiiq125w9q3p"
+            }
+          },
+          "value": {
+            "type": "string",
+            "description": "value of the header key",
+            "example": "1.0.0",
+            "x-stoplight": {
+              "id": "873qco93qt7u1"
+            }
+          }
+        },
+        "x-stoplight": {
+          "id": "dmkg1i28tl02z"
+        }
+      },
+      "x-stoplight": {
+        "id": "mxbt7ln6vetpz"
+      }
+    },
+    "auth": {
+      "oneOf": [
+        {
+          "$ref": "./basicCredentials.json",
+          "x-stoplight": {
+            "id": "e3frvcy7vhsar"
+          }
+        },
+        {
+          "$ref": "./OAuth2Credentials.json",
+          "x-stoplight": {
+            "id": "pgfnhs7qtpu5t"
+          }
+        },
+        {
+          "$ref": "./tokenCredentials.json",
+          "x-stoplight": {
+            "id": "xctv5gsvdks1f"
+          }
+        }
+      ],
+      "description": "Authentication for this callback only",
+      "x-stoplight": {
+        "id": "f8y7hhur35cc6"
+      }
+    }
+  },
+  "required": [
+    "url",
+    "version"
+  ]
+}

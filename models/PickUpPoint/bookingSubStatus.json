@@ -1,0 +1,17 @@
+{
+  "title": "bookingSubStatus",
+  "x-stoplight": {
+    "id": "4w95yc7rjv422"
+  },
+  "type": "string",
+  "description": "booking sub status for a pickup point",
+  "enum": [
+    "MANUAL",
+    "BLOCKED",
+    "EXPIRED",
+    "FULL",
+    "FAILED",
+    "NOT_COLLECTED"
+  ],
+  "example": "MANUAL"
+}

@@ -1,0 +1,32 @@
+{
+  "title": "Length",
+  "x-stoplight": {
+    "id": "bic08s5oc0ajz"
+  },
+  "type": "object",
+  "x-tags": [
+    "Dimension"
+  ],
+  "properties": {
+    "value": {
+      "type": "number",
+      "example": 10,
+      "x-stoplight": {
+        "id": "qkczb96xyo19s"
+      }
+    },
+    "unit": {
+      "$ref": "./lengthUnit.json",
+      "x-stoplight": {
+        "id": "2jovn6q3xsh4i"
+      }
+    }
+  },
+  "examples": [
+    {
+      "value": 10,
+      "unit": "cm"
+    }
+  ],
+  "description": "Specifies the size"
+}

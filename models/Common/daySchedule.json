@@ -1,0 +1,25 @@
+{
+  "title": "Schedule of a day",
+  "x-stoplight": {
+    "id": "vfdouqgchqv7d"
+  },
+  "type": "array",
+  "description": "Schedule of a day made of an array of slots",
+  "items": {
+    "$ref": "./slot.json",
+    "x-stoplight": {
+      "id": "a0iyv0shvdzlf"
+    }
+  },
+  "examples": [
+    [
+      {
+        "start": "14:00",
+        "end": "18:00"
+      }
+    ]
+  ],
+  "x-tags": [
+    "Common"
+  ]
+}

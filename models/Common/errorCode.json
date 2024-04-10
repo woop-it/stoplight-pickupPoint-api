@@ -1,0 +1,56 @@
+{
+  "title": "Error code (errorCode)",
+  "x-stoplight": {
+    "id": "413crx6swlatl"
+  },
+  "type": "object",
+  "x-examples": {
+    "409 - Conflict ": {
+      "statusCode": 409,
+      "error": "Conflict",
+      "message": "Conflict"
+    }
+  },
+  "description": "Corresponds to the model returned in the event of an API error.",
+  "properties": {
+    "statusCode": {
+      "type": "integer",
+      "description": "HTTP Status Code",
+      "x-stoplight": {
+        "id": "6bbw0cn9v46fm"
+      }
+    },
+    "error": {
+      "type": "string",
+      "description": "Title of the error returned",
+      "x-stoplight": {
+        "id": "oq7as3qu5nmlh"
+      }
+    },
+    "message": {
+      "type": "string",
+      "description": "Description of the error message",
+      "x-stoplight": {
+        "id": "yupkhqu3i3lln"
+      }
+    },
+    "reasons": {
+      "type": "array",
+      "description": "List of possible technical reasons",
+      "items": {
+        "type": "string",
+        "enum": [
+          "STORE_NOT_FOUND",
+          "EXCHANGE_PLACE_NOT_FOUND",
+          "PICKUP_POINT_NOT_FOUND"
+        ],
+        "x-stoplight": {
+          "id": "1qt6wjj3rieyx"
+        }
+      },
+      "x-stoplight": {
+        "id": "0x164f41oa5qk"
+      }
+    }
+  }
+}
