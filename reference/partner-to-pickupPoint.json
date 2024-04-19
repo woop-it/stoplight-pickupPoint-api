@@ -38,7 +38,9 @@
       ],
       "get": {
         "summary": "Get Booking ID",
-        "tags": [],
+        "tags": [
+          "Booking"
+        ],
         "responses": {
           "200": {
             "description": "User Found",
@@ -188,7 +190,9 @@
       },
       "patch": {
         "summary": "PATCH Booking ID",
-        "tags": [],
+        "tags": [
+          "Booking"
+        ],
         "responses": {
           "204": {
             "description": "the booking has been modified",
@@ -293,7 +297,9 @@
       },
       "delete": {
         "summary": "DELETE Booking ID",
-        "tags": [],
+        "tags": [
+          "Booking"
+        ],
         "responses": {
           "204": {
             "description": "Successfully cancelled booking"
@@ -567,7 +573,10 @@
         "description": "Create a new external booking.",
         "x-stoplight": {
           "id": "guguwwf69z0pt"
-        }
+        },
+        "tags": [
+          "Booking"
+        ]
       },
       "parameters": [],
       "get": {
@@ -680,13 +689,18 @@
         "x-stoplight": {
           "id": "b4kaea8ml1wxr"
         },
-        "description": "Retrieve the information from all external bookings"
+        "description": "Retrieve the information from all external bookings",
+        "tags": [
+          "Booking"
+        ]
       }
     },
     "/pickupPoints": {
       "post": {
         "summary": "Search pickup-Points",
-        "tags": [],
+        "tags": [
+          "Pickup-points"
+        ],
         "responses": {
           "200": {
             "description": "OK. Contains the retrieved relay points."
@@ -718,8 +732,9 @@
               "examples": {}
             }
           },
-          "description": "This method retrieves the list of relay-point for all the carriers associed to your account.\n\nThe method works like a search engine based on mandatory criteria, two options : \n- with latitude and Longitude \n- with postalCode \n\nSearch options enable you to refine the method's eligibility engine. The more options there are, the more precise the results will be. \n\nYou can search for a relay-point based on the contents of the customer basket (parcel dimensions: length, width, height and weight). This allows you to suggest delivery points capable of receiving parcels of a certain weight. "
-        }
+          "description": " The method works like a search engine based on mandatory criteria, two options :\n 1) with latitude and Longitude\n 2) with postalCode"
+        },
+        "description": "This method retrieves the list of relay-point for all the carriers associed to your account.\n\nSearch options enable you to refine the method's eligibility engine. The more options there are, the more precise the results will be.\n\nYou can search for a relay-point based on the contents of the customer basket (parcel dimensions: length, width, height and weight). This allows you to suggest delivery points capable of receiving parcels of a certain weight."
       }
     }
   },
