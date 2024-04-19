@@ -682,10 +682,153 @@
         },
         "description": "Retrieve the information from all external bookings"
       }
+    },
+    "/pickupPoints": {
+      "post": {
+        "summary": "Your POST endpoint",
+        "tags": [],
+        "responses": {},
+        "operationId": "post-pickupPoints",
+        "x-stoplight": {
+          "id": "r11nhbmwivi5m"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/postPickupPoints"
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
-    "schemas": {},
+    "schemas": {
+      "postPickupPoints": {
+        "x-examples": {
+          "Example 1": {
+            "OperatorCode": "Quadient",
+            "latitude": 50.6379636,
+            "longitude": 3.077384,
+            "postalCode": 59000,
+            "limit": 55,
+            "offset": 20,
+            "kilometricDistance": 20,
+            "depositDate": 20,
+            "countryCode": "FR",
+            "accessibility": "ACCESSIBLE",
+            "boxCategoryAccessibility": "UPPER",
+            "storeID": 20,
+            "type": 20,
+            "category": 20,
+            "packages": [
+              {
+                "length": {
+                  "value": 15,
+                  "unit": "cm"
+                },
+                "width": {
+                  "value": 15,
+                  "unit": "cm"
+                },
+                "height": {
+                  "value": 1.2,
+                  "unit": "m"
+                },
+                "weight": {
+                  "value": 1,
+                  "unit": "kg"
+                },
+                "products": [
+                  {
+                    "type": "TYPOLOGY_GENERIC",
+                    "ean": "4dq86zd4q6zd4q64",
+                    "cug": "q56zd4q65d4q",
+                    "label": "Lamp",
+                    "quantity": 1
+                  }
+                ],
+                "quantity": 1
+              }
+            ]
+          }
+        },
+        "description": "Specifies the information for a pickup point search",
+        "title": "Search for pickup points (postPickupPoints)",
+        "oneOf": [
+          {
+            "description": "n;, nkj",
+            "properties": {
+              "OperatorCode": {
+                "type": "string"
+              },
+              "latitude": {
+                "type": "number",
+                "description": "Latitude of the search point"
+              },
+              "longitude": {
+                "type": "number",
+                "description": "Longitude of the search point"
+              },
+              "postalCode": {
+                "type": "integer"
+              },
+              "limit": {
+                "type": "integer",
+                "description": "Number of pickup points"
+              },
+              "offset": {
+                "type": "integer"
+              },
+              "kilometricDistance": {
+                "type": "integer"
+              },
+              "depositDate": {
+                "type": "integer"
+              },
+              "countryCode": {
+                "type": "string",
+                "description": "Country code (ISO 3166 alpha-2). View list : [Country code.md]"
+              },
+              "accessibility": {
+                "type": "string"
+              },
+              "boxCategoryAccessibility": {
+                "type": "string"
+              },
+              "storeID": {
+                "type": "integer"
+              },
+              "type": {
+                "type": "integer"
+              },
+              "category": {
+                "type": "integer"
+              },
+              "packages": {
+                "$ref": "../models/Package/package.json"
+              }
+            }
+          },
+          {
+            "x-stoplight": {
+              "id": "9bwng1t9mcal4"
+            },
+            "properties": {
+              "oooooo": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "b9aan8zg82ejv"
+                }
+              }
+            }
+          }
+        ],
+        "type": "object"
+      }
+    },
     "securitySchemes": {
       "API Key - 1": {
         "type": "oauth2"
