@@ -1,0 +1,67 @@
+{
+  "type": "object",
+  "x-examples": {
+    "Example 1": {
+      "type": "address",
+      "addressLine1": "string",
+      "addressLine2": "string",
+      "elevator": true,
+      "floor": 0,
+      "doorCode": "string",
+      "postalCode": "59800",
+      "city": "LILLE",
+      "district": "string",
+      "country": "FR",
+      "comment": "string",
+      "coordinates": {
+        "latitude": 0,
+        "longitude": 0
+      }
+    }
+  },
+  "description": "Definition of an address model",
+  "title": "Address",
+  "properties": {
+    "addressLine1": {
+      "type": "string"
+    },
+    "addressLine2": {
+      "type": "string"
+    },
+    "elevator": {
+      "type": "boolean"
+    },
+    "floor": {
+      "type": "integer"
+    },
+    "doorCode": {
+      "type": "string"
+    },
+    "postalCode": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "district": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "comment": {
+      "type": "string"
+    },
+    "coordinates": {
+      "type": "object",
+      "properties": {
+        "latitude": {
+          "type": "integer"
+        },
+        "longitude": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}
