@@ -685,10 +685,14 @@
     },
     "/pickupPoints": {
       "post": {
-        "summary": "Your POST endpoint",
+        "summary": "Search pickup-Points",
         "tags": [],
-        "responses": {},
-        "operationId": "post-pickupPoints",
+        "responses": {
+          "200": {
+            "description": "OK. Contains the retrieved relay points."
+          }
+        },
+        "operationId": "postPickupPoints",
         "x-stoplight": {
           "id": "r11nhbmwivi5m"
         },
@@ -696,137 +700,426 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/postPickupPoints"
-              }
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/postPickupPointsWithPostalCode",
+                    "x-stoplight": {
+                      "id": "f88br9lbudqei"
+                    }
+                  },
+                  {
+                    "$ref": "#/components/schemas/postPickupPointsWithGeoPoint",
+                    "x-stoplight": {
+                      "id": "m6evyswc471ja"
+                    }
+                  }
+                ]
+              },
+              "examples": {}
             }
-          }
+          },
+          "description": "This method retrieves the list of relay-point for all the carriers associed to your account.\n\nThe method works like a search engine based on mandatory criteria, two options : \n- with latitude and Longitude \n- with postalCode \n\nSearch options enable you to refine the method's eligibility engine. The more options there are, the more precise the results will be. \n\nYou can search for a relay-point based on the contents of the customer basket (parcel dimensions: length, width, height and weight). This allows you to suggest delivery points capable of receiving parcels of a certain weight. "
         }
       }
     }
   },
   "components": {
     "schemas": {
-      "postPickupPoints": {
+      "postPickupPointsWithPostalCode": {
+        "type": "object",
+        "x-stoplight": {
+          "id": "934aa6c06099e"
+        },
         "x-examples": {
           "Example 1": {
+            "OperatorCode": "string",
+            "latitude": 0,
+            "longitude": 0,
+            "postalCode": 0,
+            "limit": 0,
+            "offset": 0,
+            "kilometricDistance": 0,
+            "depositDate": 0,
+            "countryCode": "string",
+            "accessibility": "string",
+            "boxCategoryAccessibility": "string",
+            "storeID": 0,
+            "type": 0,
+            "category": 0,
+            "packages": {
+              "references": [
+                {
+                  "reference": "Package_Reference_001",
+                  "barcode": {
+                    "value": "54fd56g4f5gfd456sd",
+                    "type": "barcode",
+                    "format": "128"
+                  }
+                }
+              ],
+              "length": {
+                "value": 10,
+                "unit": "cm"
+              },
+              "width": {
+                "value": 10,
+                "unit": "cm"
+              },
+              "height": {
+                "value": 10,
+                "unit": "cm"
+              },
+              "weight": {
+                "value": 5,
+                "unit": "kg"
+              },
+              "products": [
+                {
+                  "type": "TYPOLOGY_GENERIC",
+                  "ean": "Ean_001",
+                  "cug": "Cug_001",
+                  "label": "Product_Label",
+                  "quantity": 1
+                }
+              ],
+              "quantity": 1,
+              "attributes": {
+                "footprint": {
+                  "value": 10,
+                  "unit": "m2"
+                }
+              },
+              "type": "PACKAGE"
+            }
+          }
+        },
+        "description": "Specifies the information for a relay point search with postalCode",
+        "title": "Search relay point with postalCode",
+        "required": [
+          "postalCode",
+          "packages"
+        ],
+        "properties": {
+          "OperatorCode": {
+            "type": "string",
+            "example": "Quadient",
+            "description": "operatorCode filter = locker manager"
+          },
+          "postalCode": {
+            "type": "number",
+            "description": "PostalCode of the search point"
+          },
+          "limit": {
+            "type": "number",
+            "description": "Number of pickup points",
+            "default": 25,
+            "maximum": 100
+          },
+          "offset": {
+            "type": "number",
+            "description": "offset to display the pickup points",
+            "default": 0
+          },
+          "kilometricDistance": {
+            "type": "number",
+            "description": "Distance in kilometres from the search radius",
+            "default": 5,
+            "maximum": 50
+          },
+          "depositDate": {
+            "type": "string",
+            "description": "Estimated drop-off date at the relay point ",
+            "format": "date"
+          },
+          "countryCode": {
+            "type": "string",
+            "description": "Country code (ISO 3166 alpha-2). View list : [Country code.md]"
+          },
+          "accessibility": {
+            "enum": [
+              "ACCESSIBLE"
+            ],
+            "description": "Pick-Up point Accessibility"
+          },
+          "boxCategoryAccessibility": {
+            "enum": [
+              "UPPER",
+              "LOWER"
+            ],
+            "description": "Box Category Accessibility\n\n"
+          },
+          "packages": {
+            "type": "array",
+            "description": "All packages\n\n",
+            "items": {
+              "$ref": "../models/Package/package.json",
+              "x-stoplight": {
+                "id": "tmev8zj3ui14z"
+              }
+            }
+          }
+        },
+        "examples": [
+          {
             "OperatorCode": "Quadient",
-            "latitude": 50.6379636,
-            "longitude": 3.077384,
-            "postalCode": 59000,
-            "limit": 55,
-            "offset": 20,
-            "kilometricDistance": 20,
-            "depositDate": 20,
-            "countryCode": "FR",
+            "postalCode": 0,
+            "limit": 25,
+            "offset": 0,
+            "kilometricDistance": 5,
+            "depositDate": "2019-08-24",
+            "countryCode": "string",
             "accessibility": "ACCESSIBLE",
             "boxCategoryAccessibility": "UPPER",
-            "storeID": 20,
-            "type": 20,
-            "category": 20,
             "packages": [
               {
+                "references": [
+                  {
+                    "reference": "Package_Reference_001",
+                    "barcode": {
+                      "value": "54fd56g4f5gfd456sd",
+                      "type": "barcode",
+                      "format": "128"
+                    }
+                  }
+                ],
                 "length": {
-                  "value": 15,
+                  "value": 10,
                   "unit": "cm"
                 },
                 "width": {
-                  "value": 15,
+                  "value": 10,
                   "unit": "cm"
                 },
                 "height": {
-                  "value": 1.2,
-                  "unit": "m"
+                  "value": 10,
+                  "unit": "cm"
                 },
                 "weight": {
-                  "value": 1,
+                  "value": 5,
                   "unit": "kg"
                 },
                 "products": [
                   {
                     "type": "TYPOLOGY_GENERIC",
-                    "ean": "4dq86zd4q6zd4q64",
-                    "cug": "q56zd4q65d4q",
-                    "label": "Lamp",
+                    "ean": "Ean_001",
+                    "cug": "Cug_001",
+                    "label": "Product_Label",
                     "quantity": 1
                   }
                 ],
-                "quantity": 1
+                "quantity": 1,
+                "attributes": {
+                  "footprint": {
+                    "value": 10,
+                    "unit": "m2"
+                  }
+                },
+                "type": "PACKAGE"
               }
             ]
           }
+        ]
+      },
+      "postPickupPointsWithGeoPoint": {
+        "type": "object",
+        "x-stoplight": {
+          "id": "z5jpttrcsofrj"
         },
-        "description": "Specifies the information for a pickup point search",
-        "title": "Search for pickup points (postPickupPoints)",
-        "oneOf": [
-          {
-            "description": "n;, nkj",
-            "properties": {
-              "OperatorCode": {
-                "type": "string"
-              },
-              "latitude": {
-                "type": "number",
-                "description": "Latitude of the search point"
-              },
-              "longitude": {
-                "type": "number",
-                "description": "Longitude of the search point"
-              },
-              "postalCode": {
-                "type": "integer"
-              },
-              "limit": {
-                "type": "integer",
-                "description": "Number of pickup points"
-              },
-              "offset": {
-                "type": "integer"
-              },
-              "kilometricDistance": {
-                "type": "integer"
-              },
-              "depositDate": {
-                "type": "integer"
-              },
-              "countryCode": {
-                "type": "string",
-                "description": "Country code (ISO 3166 alpha-2). View list : [Country code.md]"
-              },
-              "accessibility": {
-                "type": "string"
-              },
-              "boxCategoryAccessibility": {
-                "type": "string"
-              },
-              "storeID": {
-                "type": "integer"
-              },
-              "type": {
-                "type": "integer"
-              },
-              "category": {
-                "type": "integer"
-              },
-              "packages": {
-                "$ref": "../models/Package/package.json"
-              }
-            }
-          },
-          {
-            "x-stoplight": {
-              "id": "9bwng1t9mcal4"
-            },
-            "properties": {
-              "oooooo": {
-                "type": "string",
-                "x-stoplight": {
-                  "id": "b9aan8zg82ejv"
+        "x-examples": {
+          "Example 1": {
+            "OperatorCode": "string",
+            "latitude": 0,
+            "longitude": 0,
+            "postalCode": 0,
+            "limit": 0,
+            "offset": 0,
+            "kilometricDistance": 0,
+            "depositDate": 0,
+            "countryCode": "string",
+            "accessibility": "string",
+            "boxCategoryAccessibility": "string",
+            "storeID": 0,
+            "type": 0,
+            "category": 0,
+            "packages": {
+              "references": [
+                {
+                  "reference": "Package_Reference_001",
+                  "barcode": {
+                    "value": "54fd56g4f5gfd456sd",
+                    "type": "barcode",
+                    "format": "128"
+                  }
                 }
+              ],
+              "length": {
+                "value": 10,
+                "unit": "cm"
+              },
+              "width": {
+                "value": 10,
+                "unit": "cm"
+              },
+              "height": {
+                "value": 10,
+                "unit": "cm"
+              },
+              "weight": {
+                "value": 5,
+                "unit": "kg"
+              },
+              "products": [
+                {
+                  "type": "TYPOLOGY_GENERIC",
+                  "ean": "Ean_001",
+                  "cug": "Cug_001",
+                  "label": "Product_Label",
+                  "quantity": 1
+                }
+              ],
+              "quantity": 1,
+              "attributes": {
+                "footprint": {
+                  "value": 10,
+                  "unit": "m2"
+                }
+              },
+              "type": "PACKAGE"
+            }
+          }
+        },
+        "description": "Specifies the information for a relay point search with latitude and longitude ",
+        "title": "Search relay point with latitude and longitude",
+        "required": [
+          "latitude",
+          "longitude",
+          "packages"
+        ],
+        "properties": {
+          "OperatorCode": {
+            "type": "string",
+            "example": "quadient",
+            "description": "operatorCode filter = locker manager"
+          },
+          "latitude": {
+            "type": "number",
+            "description": "Latitude of the search point"
+          },
+          "longitude": {
+            "type": "number",
+            "description": "Longitude of the search point"
+          },
+          "limit": {
+            "type": "number",
+            "description": "Number of pickup points",
+            "default": 25,
+            "maximum": 100
+          },
+          "offset": {
+            "type": "number",
+            "description": "offset to display the pickup points",
+            "default": 0
+          },
+          "kilometricDistance": {
+            "type": "number",
+            "description": "Distance in kilometres from the search radius",
+            "default": 5,
+            "maximum": 50
+          },
+          "depositDate": {
+            "type": "string",
+            "description": "Estimated drop-off date at the relay point ",
+            "format": "date"
+          },
+          "countryCode": {
+            "type": "string",
+            "description": "Country code (ISO 3166 alpha-2). View list : [Country code.md]"
+          },
+          "accessibility": {
+            "enum": [
+              "ACCESSIBLE"
+            ],
+            "description": "Pick-Up point Accessibility"
+          },
+          "boxCategoryAccessibility": {
+            "enum": [
+              "UPPER",
+              "LOWER"
+            ],
+            "description": "Box Category Accessibility\n\n"
+          },
+          "packages": {
+            "type": "array",
+            "description": "All packages\n\n",
+            "items": {
+              "$ref": "../models/Package/package.json",
+              "x-stoplight": {
+                "id": "1v43w36bur2c3"
               }
             }
           }
-        ],
-        "type": "object"
+        },
+        "examples": [
+          {
+            "OperatorCode": "quadient",
+            "latitude": 0,
+            "longitude": 0,
+            "limit": 25,
+            "offset": 0,
+            "kilometricDistance": 5,
+            "depositDate": "2019-08-24",
+            "countryCode": "string",
+            "accessibility": "ACCESSIBLE",
+            "boxCategoryAccessibility": "UPPER",
+            "packages": [
+              {
+                "references": [
+                  {
+                    "reference": "Package_Reference_001",
+                    "barcode": {
+                      "value": "54fd56g4f5gfd456sd",
+                      "type": "barcode",
+                      "format": "128"
+                    }
+                  }
+                ],
+                "length": {
+                  "value": 10,
+                  "unit": "cm"
+                },
+                "width": {
+                  "value": 10,
+                  "unit": "cm"
+                },
+                "height": {
+                  "value": 10,
+                  "unit": "cm"
+                },
+                "weight": {
+                  "value": 5,
+                  "unit": "kg"
+                },
+                "products": [
+                  {
+                    "type": "TYPOLOGY_GENERIC",
+                    "ean": "Ean_001",
+                    "cug": "Cug_001",
+                    "label": "Product_Label",
+                    "quantity": 1
+                  }
+                ],
+                "quantity": 1,
+                "attributes": {
+                  "footprint": {
+                    "value": 10,
+                    "unit": "m2"
+                  }
+                },
+                "type": "PACKAGE"
+              }
+            ]
+          }
+        ]
       }
     },
     "securitySchemes": {
