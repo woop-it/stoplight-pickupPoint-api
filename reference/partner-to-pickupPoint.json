@@ -37,7 +37,7 @@
         }
       ],
       "get": {
-        "summary": "Get Booking ID",
+        "summary": "Get booking by id",
         "tags": [
           "Booking"
         ],
@@ -189,7 +189,7 @@
         }
       },
       "delete": {
-        "summary": "DELETE Booking ID",
+        "summary": "Delete booking",
         "tags": [
           "Booking"
         ],
@@ -235,7 +235,7 @@
         "description": " API to delete an external booking."
       },
       "patch": {
-        "summary": "PATCH Booking ID",
+        "summary": "Update booking",
         "tags": [
           "Booking"
         ],
@@ -344,7 +344,7 @@
     },
     "/bookings": {
       "post": {
-        "summary": "POST Bookings",
+        "summary": "Create booking",
         "operationId": "post-bookings",
         "responses": {
           "200": {
@@ -580,7 +580,7 @@
       },
       "parameters": [],
       "get": {
-        "summary": "GET Booking (all)",
+        "summary": "Get all booking",
         "operationId": "get-pickupPoints-bookings",
         "responses": {
           "200": {
