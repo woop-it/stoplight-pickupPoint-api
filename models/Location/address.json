@@ -21,47 +21,65 @@
   },
   "description": "Definition of an address model",
   "title": "Address",
+  "examples": [
+    {
+      "addressLine1": "string",
+      "addressLine2": "string",
+      "elevator": true,
+      "floor": 0,
+      "doorCode": "string",
+      "postalCode": "string",
+      "city": "string",
+      "district": "string",
+      "country": "string",
+      "comment": "string"
+    }
+  ],
+  "required": [
+    "postalCode",
+    "city",
+    "country"
+  ],
   "properties": {
     "addressLine1": {
-      "type": "string"
+      "type": "string",
+      "description": "Full address of the main location"
     },
     "addressLine2": {
-      "type": "string"
+      "type": "string",
+      "description": "Additional address of the location"
     },
     "elevator": {
-      "type": "boolean"
+      "type": "boolean",
+      "description": "Indicates whether the address has a lift, Default value: false"
     },
     "floor": {
-      "type": "integer"
+      "type": "integer",
+      "description": "Specifies the floor of the address in question, Default value: 0"
     },
     "doorCode": {
-      "type": "string"
+      "type": "string",
+      "description": "Door code"
     },
     "postalCode": {
-      "type": "string"
+      "type": "string",
+      "description": "Postcode"
     },
     "city": {
-      "type": "string"
+      "type": "string",
+      "description": "City"
     },
     "district": {
-      "type": "string"
+      "type": "string",
+      "description": "Borough name"
     },
     "country": {
-      "type": "string"
+      "type": "string",
+      "description": "Country code (ISO 3166 alpha-2). View list : [Country code.md]"
     },
     "comment": {
-      "type": "string"
-    },
-    "coordinates": {
-      "type": "object",
-      "properties": {
-        "latitude": {
-          "type": "integer"
-        },
-        "longitude": {
-          "type": "integer"
-        }
-      }
+      "type": "string",
+      "description": "Additional comments"
     }
   }
 }

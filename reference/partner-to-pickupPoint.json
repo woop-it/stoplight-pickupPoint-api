@@ -703,7 +703,51 @@
         ],
         "responses": {
           "200": {
-            "description": "OK. Contains the retrieved relay points."
+            "$ref": "#/components/responses/postPickupPoints"
+          },
+          "400": {
+            "description": "Missing and/or incorrect items in the body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/Common/errorCode.json"
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "statusCode": 0,
+                      "error": "string",
+                      "message": "string",
+                      "reasons": [
+                        "STORE_NOT_FOUND"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "You are not allowed to access this item.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/Common/errorCode.json"
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "statusCode": 0,
+                      "error": "string",
+                      "message": "string",
+                      "reasons": [
+                        "STORE_NOT_FOUND"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
           }
         },
         "operationId": "postPickupPoints",
@@ -1135,6 +1179,62 @@
             ]
           }
         ]
+      },
+      "errorCodeResponse": {
+        "title": "Error code (errorCode)",
+        "x-stoplight": {
+          "id": "ktlt9dcqtqto0"
+        },
+        "type": "object",
+        "description": "Corresponds to the model returned in the event of an API error.",
+        "examples": [
+          {
+            "statusCode": 0,
+            "error": "string",
+            "message": "string",
+            "reasons": "string"
+          }
+        ],
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "x-stoplight": {
+              "id": "q7yz897mknw26"
+            },
+            "description": "HTTP Status Code"
+          },
+          "error": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "llxf10hz2g5dp"
+            },
+            "description": "Title of the error returned"
+          },
+          "message": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "3oy9wo020oh5i"
+            },
+            "description": "Description of the error message"
+          },
+          "reasons": {
+            "type": "array",
+            "x-stoplight": {
+              "id": "p551ohgr7216s"
+            },
+            "description": "List of possible technical reasons",
+            "items": {
+              "x-stoplight": {
+                "id": "7ilihv4picvke"
+              },
+              "enum": [
+                "STORE_NOT_FOUND",
+                "EXCHANGE_PLACE_NOT_FOUND",
+                "PICKUP_POINT_NOT_FOUND"
+              ]
+            }
+          }
+        }
       }
     },
     "securitySchemes": {
@@ -1144,231 +1244,11 @@
     },
     "responses": {
       "postPickupPoints": {
-        "description": "Example response",
+        "description": "OK. Contains the retrieved relay points.",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "coordinates": {
-                  "type": "object",
-                  "properties": {
-                    "longitude": {
-                      "type": "number"
-                    },
-                    "latitude": {
-                      "type": "number"
-                    }
-                  }
-                },
-                "address": {
-                  "type": "object",
-                  "properties": {
-                    "title": {
-                      "type": "string"
-                    },
-                    "addressLine1": {
-                      "type": "string"
-                    },
-                    "addressLine2": {
-                      "type": "string"
-                    },
-                    "country": {
-                      "type": "string"
-                    },
-                    "postalCode": {
-                      "type": "string"
-                    },
-                    "city": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "openingHours": {
-                  "type": "object",
-                  "properties": {
-                    "sunday": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {}
-                      }
-                    },
-                    "saturday": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "start": {
-                            "type": "string"
-                          },
-                          "end": {
-                            "type": "string"
-                          }
-                        }
-                      }
-                    },
-                    "friday": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "start": {
-                            "type": "string"
-                          },
-                          "end": {
-                            "type": "string"
-                          }
-                        }
-                      }
-                    },
-                    "thursday": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "start": {
-                            "type": "string"
-                          },
-                          "end": {
-                            "type": "string"
-                          }
-                        }
-                      }
-                    },
-                    "wednesday": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "start": {
-                            "type": "string"
-                          },
-                          "end": {
-                            "type": "string"
-                          }
-                        }
-                      }
-                    },
-                    "tuesday": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "start": {
-                            "type": "string"
-                          },
-                          "end": {
-                            "type": "string"
-                          }
-                        }
-                      }
-                    },
-                    "monday": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "start": {
-                            "type": "string"
-                          },
-                          "end": {
-                            "type": "string"
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                "closingDates": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {}
-                  }
-                },
-                "packageMaxWeight": {
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "integer"
-                    },
-                    "unit": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "packageMaxDimension": {
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "integer"
-                    },
-                    "unit": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "packageMaxCombinedLength": {
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "integer"
-                    },
-                    "unit": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "packageMaxGirth": {
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "integer"
-                    },
-                    "unit": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "maxPackageQuantity": {
-                  "type": "integer"
-                },
-                "carrier": {
-                  "type": "object",
-                  "properties": {
-                    "code": {
-                      "type": "string"
-                    },
-                    "name": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "boxCategories": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "code": {
-                        "type": "string"
-                      },
-                      "accessibility": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                },
-                "type": {
-                  "type": "string"
-                }
-              },
               "x-examples": {
                 "Example 1": {
                   "id": "Auto Spider - Non accessible PMR",
@@ -1484,10 +1364,226 @@
                   ],
                   "type": "PICKUP_POINT_RELAY_WITH_LOCKER"
                 }
+              },
+              "required": [
+                "id",
+                "coordinates",
+                "address",
+                "openingHours",
+                "packageMaxWeight",
+                "packageMaxDimension",
+                "packageMaxCombinedLength",
+                "packageMaxGirth",
+                "maxPackageQuantity",
+                "carrier",
+                "type"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "ID of the relay point"
+                },
+                "coordinates": {
+                  "$ref": "../models/Location/coordinates.json",
+                  "description": "Coordinates of the relay point"
+                },
+                "address": {
+                  "$ref": "../models/Location/address.json",
+                  "description": "Full address of the relay point"
+                },
+                "openingHours": {
+                  "type": "object",
+                  "description": "Opening hours of the relay point",
+                  "properties": {
+                    "sunday": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "../models/Common/interval_hour.json"
+                      }
+                    },
+                    "saturday": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "../models/Common/interval_hour.json"
+                      }
+                    },
+                    "friday": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "../models/Common/interval_hour.json"
+                      }
+                    },
+                    "thursday": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "../models/Common/interval_hour.json"
+                      }
+                    },
+                    "wednesday": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "../models/Common/interval_hour.json"
+                      }
+                    },
+                    "tuesday": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "../models/Common/interval_hour.json"
+                      }
+                    },
+                    "monday": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "../models/Common/interval_hour.json"
+                      }
+                    }
+                  }
+                },
+                "closingDates": {
+                  "type": "array",
+                  "description": "List of temporary closure dates of the relay point",
+                  "items": {
+                    "type": "string",
+                    "format": "date"
+                  }
+                },
+                "packageMaxWeight": {
+                  "$ref": "../models/Dimension/weight.json"
+                },
+                "packageMaxDimension": {
+                  "$ref": "../models/Dimension/length.json"
+                },
+                "packageMaxCombinedLength": {
+                  "$ref": "../models/Dimension/length.json"
+                },
+                "packageMaxGirth": {
+                  "$ref": "../models/Dimension/length.json"
+                },
+                "maxPackageQuantity": {
+                  "type": "integer"
+                },
+                "carrier": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "boxCategories": {
+                  "$ref": "../models/PickUpPoint/boxCategory.json"
+                },
+                "type": {
+                  "type": "string",
+                  "example": "PICKUP_POINT_RELAY_WITH_LOCKER"
+                }
+              }
+            },
+            "examples": {
+              "Example 1": {
+                "value": {
+                  "id": "string",
+                  "coordinates": {
+                    "latitude": 50.633333,
+                    "longitude": 3.066667
+                  },
+                  "address": {
+                    "addressLine1": "string",
+                    "addressLine2": "string",
+                    "elevator": true,
+                    "floor": 0,
+                    "doorCode": "string",
+                    "postalCode": "string",
+                    "city": "string",
+                    "district": "string",
+                    "country": "string",
+                    "comment": "string"
+                  },
+                  "openingHours": {
+                    "sunday": [
+                      {
+                        "start": "14:15:22Z",
+                        "end": "14:15:22Z"
+                      }
+                    ],
+                    "saturday": [
+                      {
+                        "start": "14:15:22Z",
+                        "end": "14:15:22Z"
+                      }
+                    ],
+                    "friday": [
+                      {
+                        "start": "14:15:22Z",
+                        "end": "14:15:22Z"
+                      }
+                    ],
+                    "thursday": [
+                      {
+                        "start": "14:15:22Z",
+                        "end": "14:15:22Z"
+                      }
+                    ],
+                    "wednesday": [
+                      {
+                        "start": "14:15:22Z",
+                        "end": "14:15:22Z"
+                      }
+                    ],
+                    "tuesday": [
+                      {
+                        "start": "14:15:22Z",
+                        "end": "14:15:22Z"
+                      }
+                    ],
+                    "monday": [
+                      {
+                        "start": "14:15:22Z",
+                        "end": "14:15:22Z"
+                      }
+                    ]
+                  },
+                  "closingDates": [
+                    "2019-08-24"
+                  ],
+                  "packageMaxWeight": {
+                    "value": 5,
+                    "unit": "kg"
+                  },
+                  "packageMaxDimension": {
+                    "value": 10,
+                    "unit": "cm"
+                  },
+                  "packageMaxCombinedLength": {
+                    "value": 10,
+                    "unit": "cm"
+                  },
+                  "packageMaxGirth": {
+                    "value": 10,
+                    "unit": "cm"
+                  },
+                  "maxPackageQuantity": 0,
+                  "carrier": {
+                    "code": "string",
+                    "name": "string"
+                  },
+                  "boxCategories": {
+                    "id": "BoxCategory_001",
+                    "code": "S",
+                    "accessibility": "UPPER"
+                  },
+                  "type": "PICKUP_POINT_RELAY_WITH_LOCKER"
+                }
               }
             }
           }
         }
+      },
+      "errorCodeResponse": {
+        "description": ""
       }
     }
   }

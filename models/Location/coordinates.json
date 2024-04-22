@@ -1,0 +1,26 @@
+{
+  "title": "Geographical coordinates (coordinates)",
+  "x-stoplight": {
+    "id": "fd44ng82jtvvg"
+  },
+  "type": "object",
+  "description": "Specifies the geographical coordinates to be used for creation.\n\n",
+  "properties": {
+    "latitude": {
+      "type": "number",
+      "x-stoplight": {
+        "id": "a1iag0vzyrhr5"
+      },
+      "example": 50.633333,
+      "description": "latitude of the relay point "
+    },
+    "longitude": {
+      "type": "number",
+      "x-stoplight": {
+        "id": "npnd7nw1162yo"
+      },
+      "description": "longitude of the relay point ",
+      "example": 3.066667
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "title": "Time slot (interval_hour)",
+  "x-stoplight": {
+    "id": "lyvdmnjzow9n1"
+  },
+  "type": "object",
+  "description": "Specifies the opening date interval.\n\n",
+  "required": [
+    "start",
+    "end"
+  ],
+  "properties": {
+    "start": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "4ieku9u6evd4i"
+      },
+      "format": "time"
+    },
+    "end": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "s9dmidr1k7h4s"
+      },
+      "format": "time"
+    }
+  },
+  "examples": [
+    {
+      "start": "14:15:22Z",
+      "end": "14:15:22Z"
+    }
+  ]
+}
